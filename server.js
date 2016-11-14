@@ -3,6 +3,15 @@ var methodOveride = require('method-override');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var burgers = require('./controllers/burgers_controller.js');
+var models  = require('./models');
+
+// extract our sequelize connection from the models object, to avoid confusion
+//var sequelizeConnection = models.sequelize;
+
+
+// create each table based on the associated model.
+// sync the tables
+
 
 // set the port
 var PORT = process.env.PORT || 3000;

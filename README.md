@@ -79,6 +79,6 @@ The directory structure for this application looks like this.
         └── main.handlebars
 ```
 
-
+sequelize model:create --name burgers --attributes "burger_name:string,devoured:boolean"
 
 #### Developed by Bhagya
