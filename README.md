@@ -1,8 +1,8 @@
 # Eat-D-Burger
-A full stack restaurant like application.
+A full stack  CRUD application here customer can order burgers and drinks.
 
 ### Demo
-[Check to see the demo](https://guarded-reef-93870.herokuapp.com/)
+[Check to see the demo](https://pacific-peak-90829.herokuapp.com)
 
 ### Technologies used
 * Server - Node.js, Express framework, Sequelize ORM
@@ -12,30 +12,25 @@ A full stack restaurant like application.
 
 ### Design
 MVC design pattern and Server side rendering are used. 
+Parent - Child association/ relationship is used.
 
-* Model - Generic ORM and Custom orm are created to model the database. Custom orm calls the generic orm.
-
+* Model - sequelize models are created to model the database. 
 * Views- Views are created using express-handlebars, HTML, CSS
-
 * Controller - Requests coming to the server are handled by the controller/router which in turn communicates with model to get data and passes it to the views. 
 
 ### Challenges faced
-
-* How to seperate the code into MVC pattern?
-* How connect to the different pieces of code together?
-* How to get it to work on heroku?
+* How store and retrieve data using sequelize models and associations?
 
 ### Solution found
-
-* Creating a MVC style directory structure helped seperate the code into MVC pattern.
-* Visualizing which piece of code gets called first, how it calls the other functions and how the controls flows, helped to integrate it into a single application.
-* Creating database on Jaws DB helped to get it get working on heroku.
+* Reading documentation helped.
 
 ### How it works
 
-* Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.
+* Sequelized burger is a restaurant app that lets users input the names of burgers they'd like to eat.
 
 * Whenever a user submits a burger's name, the app will display the burger on the left side of the page -- waiting to be devoured.
+
+* Then the user gets can order the drink of his for each burger.
 
 * Each burger in the waiting area also has a `Devour it!` button. When the user clicks it, the burger will move to the right side of the page.
 
@@ -79,6 +74,5 @@ The directory structure for this application looks like this.
         └── main.handlebars
 ```
 
-sequelize model:create --name burgers --attributes "burger_name:string,devoured:boolean"
 
 #### Developed by Bhagya
