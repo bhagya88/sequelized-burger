@@ -5,11 +5,20 @@
 
 				{{#each burgersToBeDevoured}}
 					<div class="row white valign-wrapper">
-						<div class="col s8"><p>{{id}}. {{burger_name}}</p></div>
+						
+						<div class="col s6  valign-wrapper"><p class="valign">{{id}}. {{burger_name}}</p></div>
+
 						<form action="/?_method=PUT" method="POST">
-							<div class="col s4" >
-								<input type="text" id="drink" name="drink_name" class="input-field white" >
+							<div class="col s2" >
+								<p><i>Drink</i></p>
+							</div>
+							<div class="col s4 valign-wrapper" >
+								<input type="text" id="drink" name="drink_name" class="input-field valign">
+							</div>
+							<div class="col s1 valign-wrapper" >
+								<p>
 								<button name="id" class="valign" value={{id}}>Devour</button>
+								</p>
 							</div>
 						</form>
 					</div>
@@ -22,7 +31,11 @@
 				<div class="row red-text"><h5>Devoured Burgers</h5></div>
 				{{#each burgersDevoured}}
 				<div class="row">
-					<p>{{id}}. {{burger_name}}</p>
+					<p>{{id}}. {{burger_name}} 
+					{{#each drinks}}
+						<i class="green-text">devoured with drink </i> {{drink_name}}
+					{{/each}}
+					</p>
 				</div>
 				{{/each}}
 			</div>
@@ -32,7 +45,7 @@
 
  <!-- user input -->
 		<div class="row">
-		<h6 class="center">Enter the burger you want to eat and click submit.</h6>
+		<h6 class="center">What burger do you like to eat today?</h6>
 		 <form action="/" method="POST" class="col s12">
 	      <div class="row">
 	        <div class="input-field col s4 offset-s4">
@@ -40,7 +53,7 @@
 	          <label for="textarea1"></label>
 	        </div>
 	         <div class="input-field col s4 offset-s4 center">
-	          <button class="btn waves-effect waves-orange">Submit</button></td>
+	          <button class="btn waves-effect waves-orange">Order</button></td>
 	        </div>
 	      </div>
 	    </form>

@@ -16,8 +16,11 @@ router.get('/',function (req, res) {
 		
 	.then(function(){
 		return models.burgers.findAll({
-			    include: [models.drinks],
-			    where: { state: Sequelize.col('burgers.id')}
+			     include: [{
+        				model: models.drinks
+       // where: { burgerId: Sequelize.col('burgers.id') }
+    	
+    }]
 		})
 	})
 	.then(function(results){
@@ -30,6 +33,7 @@ router.get('/',function (req, res) {
 				return burger.devoured;
 			});
 
+			//res.json(burgersDevoured);
 		  	res.render('index',{
 		  		burgersToBeDevoured : burgersToBeDevoured,
 		  		burgersDevoured : burgersDevoured 
