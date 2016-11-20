@@ -16,19 +16,21 @@ router.get('/',function (req, res) {
 		
 	.then(function(){
 		return models.burgers.findAll({
+				// include the data from child table 
 			     include: [{
         				model: models.drinks
-       // where: { burgerId: Sequelize.col('burgers.id') }
-    	
-    }]
+				  }]
 		})
 	})
 	.then(function(results){
 			console.log(results);
+
+			//get only burgers to be devoured from results
 			var burgersToBeDevoured = results.filter(function(burger){
 				return !burger.devoured;
 			});
 
+			// get devoured burgers from results
 			var burgersDevoured = results.filter(function(burger){
 				return burger.devoured;
 			});
@@ -58,6 +60,7 @@ router.post('/', function (req, res) {
 router.put('/', function (req, res) {
 	models.burgers.update({devoured:true},{where:{id:req.body.id}})
 	.then(function(){
+		//when the user orders drinks to go with burger, drinks need to get stored in drinks table
 		return models.drinks.create({drink_name:req.body.drink_name,burgerId:req.body.id});
 		
 	})
