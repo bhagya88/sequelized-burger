@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var models  = require('../models');
 var sequelizeConnection = models.sequelize;
+var Sequelize = models.Sequelize;
 
 
 // middleware that is specific to this router - logs time of request
@@ -14,10 +15,13 @@ router.get('/',function (req, res) {
 	sequelizeConnection.sync()
 		
 	.then(function(){
-		return models.burgers.findAll()
+		return models.burgers.findAll({
+			    include: [models.drinks],
+			    where: { state: Sequelize.col('burgers.id')}
+		})
 	})
 	.then(function(results){
-		
+			console.log(results);
 			var burgersToBeDevoured = results.filter(function(burger){
 				return !burger.devoured;
 			});
@@ -45,13 +49,17 @@ router.post('/', function (req, res) {
   
 });
 
-// define route adding new burger
+
+// define route adding new burger also add the drink
 router.put('/', function (req, res) {
-	models.burgers.update({devoured:true},{where:req.body})
+	models.burgers.update({devoured:true},{where:{id:req.body.id}})
+	.then(function(){
+		return models.drinks.create({drink_name:req.body.drink_name,burgerId:req.body.id});
+		
+	})
 	.then(function(){
 		res.redirect('/');
-	
-	});
+	})
 });
 
 module.exports = router;
