@@ -23,8 +23,7 @@ router.get('/',function (req, res) {
 		})
 	})
 	.then(function(results){
-			console.log(results);
-
+			
 			//get only burgers to be devoured from results
 			var burgersToBeDevoured = results.filter(function(burger){
 				return !burger.devoured;

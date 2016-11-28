@@ -1,7 +1,9 @@
+// get all the dependencies
 var express = require('express');
 var methodOveride = require('method-override');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
+var logger = require('morgan');
 var burgers = require('./controllers/burgers_controller.js');
 var models  = require('./models');
 
@@ -35,6 +37,9 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars',exphbs({
 	defaultLayout: 'main'
 }));
+
+// middleware to log request to console
+app.use(logger('combined'));
 
 // set the view engine
 app.set('view engine', 'handlebars');

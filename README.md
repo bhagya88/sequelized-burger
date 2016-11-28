@@ -1,8 +1,8 @@
-# Eat-D-Burger
+# Sequelized
 A full stack  CRUD application here customer can order burgers and drinks.
 
 ### Demo
-[Check to see the demo](https://pacific-peak-90829.herokuapp.com)
+[Check to see the demo](https://pacific-peak-90829.herokuapp.com/)
 
 ### Technologies used
 * Server - Node.js, Express framework, Sequelize ORM
